@@ -50,6 +50,7 @@ def detect(save_img=False):
         modelc = load_classifier(name='resnet101', n=2)  # initialize
         modelc.load_state_dict(torch.load('weights/resnet101.pt', map_location=device)['model'])  # load weights
         modelc.to(device).eval()
+    
 
     # Set Dataloader
     vid_path, vid_writer = None, None
@@ -88,7 +89,7 @@ def detect(save_img=False):
         # img = img[None, :, :, :]
         # print(img.shape)
         # img = img.resize((640, 640)) #for tiny_yolov2
-        img = Image.open('test.jpg')
+        img = Image.open('test.jpg') # change the path of the image in the output folder
         img = img.resize((640, 640)) #for tiny_yolov2
         img = numpy.asarray(img)
         # X = X.transpose(2,0,1)
